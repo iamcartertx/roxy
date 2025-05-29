@@ -1,0 +1,19 @@
+# Node
+node_modules/
+dist/
+
+# Supabase
+.supabase/
+.env
+*.local
+*.env.*
+
+# OS/system junk
+.DS_Store
+
+# Logs
+*.log
+
+# IDE/editor
+.vscode/
+.idea/
