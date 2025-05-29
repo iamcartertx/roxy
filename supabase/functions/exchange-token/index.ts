@@ -42,20 +42,19 @@ serve(async (req) => {
   }), { status: 500 })
 }
 
-const insertRes = await fetch(`${supabaseUrl}/rest/v1/wrike_tokens`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "apikey": supabaseKey,
-    "Authorization": `Bearer ${supabaseKey}`
-  },
-  body: JSON.stringify({
-    access_token,
-    refresh_token,
-    expires_at
+  const insertRes = await fetch(`${supabaseUrl}/rest/v1/wrike_tokens`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "apikey": supabaseKey,
+      "Authorization": `Bearer ${supabaseKey}`
+    },
+    body: JSON.stringify({
+      access_token,
+      refresh_token,
+      expires_at
+    })
   })
-})
-
 
   if (!insertRes.ok) {
     const insertErr = await insertRes.text()
