@@ -36,19 +36,26 @@ serve(async (req) => {
   const { access_token, refresh_token, expires_in } = tokenData
   const expires_at = new Date(Date.now() + expires_in * 1000).toISOString()
 
-  const insertRes = await fetch(`${supabaseUrl}/rest/v1/wrike_tokens`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "apikey": supabaseKey,
-      "Authorization": `Bearer ${supabaseKey}`
-    },
-    body: JSON.stringify({
-      access_token,
-      refresh_token,
-      expires_at
-    })
+  if (!supabaseKey) {
+  return new Response(JSON.stringify({
+    error: "Missing SERVICE_ROLE_KEY in function env",
+  }), { status: 500 })
+}
+
+const insertRes = await fetch(`${supabaseUrl}/rest/v1/wrike_tokens`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "apikey": supabaseKey,
+    "Authorization": `Bearer ${supabaseKey}`
+  },
+  body: JSON.stringify({
+    access_token,
+    refresh_token,
+    expires_at
   })
+})
+
 
   if (!insertRes.ok) {
     const insertErr = await insertRes.text()
