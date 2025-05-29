@@ -42,6 +42,13 @@ serve(async (req) => {
   }), { status: 500 })
 }
 
+return new Response(JSON.stringify({
+  supabaseUrl,
+  supabaseKeyStart: supabaseKey?.substring(0, 6),
+  supabaseKeyLength: supabaseKey?.length,
+}), { status: 200 })
+
+
   const insertRes = await fetch(`${supabaseUrl}/rest/v1/wrike_tokens`, {
     method: "POST",
     headers: {
