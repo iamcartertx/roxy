@@ -1,3 +1,6 @@
 [submodule "wrike"]
 	path = wrike
 	url = https://github.com/iamcartertx/roxy
+[submodule "chatbot-interface-dev"]
+	path = chatbot-interface-dev
+	url = https://github.com/iamcartertx/chatbot-interface-dev
