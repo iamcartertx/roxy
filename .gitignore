@@ -1,1 +1,26 @@
+# macOS system files
 .DS_Store
+
+# Node modules (if you're using Node.js)
+node_modules/
+
+# Environment variables
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local builds or artifacts
+dist/
+build/
+
+# VS Code workspace settings
+.vscode/
+
+# Submodule cache (optional, if submodules are used aggressively)
+.git/modules/
+
+# Ignore your submodule proxy if needed
+wrike-proxy/
