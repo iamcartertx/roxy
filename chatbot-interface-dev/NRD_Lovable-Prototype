@@ -1,0 +1,80 @@
+NRD_Lovable-Prototype
+
+# Narrative Requirements Document (NRD): Lovable Prototype
+
+
+## Overview
+This prototype enables users to organize and track their work and ideas across multiple levels of hierarchy: **Projects**, **Topics**, and **Conversations**. It emphasizes clarity, flexibility, and conversational logging.
+
+---
+
+## Key Entities
+
+### 1. **Projects**
+- Container for all user activity.
+- Created by a user.
+- Fields: `project_id`, `name`, `description`, `status`, `created_at`, `updated_at`
+
+### 2. **Topics**
+- Subsections within a project, used to categorize or thread conversations.
+- Each topic belongs to a project.
+- Fields: `topic_id`, `title`, `description`, `project_id`, `created_at`, `updated_at`
+
+### 3. **Conversations**
+- Individual entries or discussions within a topic.
+- Can be thought of as user notes, logs, or dialogues.
+- Fields: `conversation_id`, `body`, `tags`, `topic_id`, `created_at`, `updated_at`
+
+---
+
+## Core User Flows
+
+### 1. **Create a Project**
+- User clicks "New Project"
+  - Inputs name, description, optional status (active, archived, etc.)
+
+### 2. **Add Topics to a Project**
+- Within a project view, user can create topics
+  - Inputs: title, optional description
+
+### 3. **Start or View Conversations**
+- Within each topic, user sees a list of conversations
+  - User can click to read, edit, or create new conversations
+  - Tags can be added for filtering/search
+
+### 4. **Search or Filter**
+- Users can search across all conversations by tag or keyword
+- Topics and projects may have collapsible or nested views
+
+---
+
+## Prototype Scope
+
+### Views to Build:
+- Project List / Dashboard
+- Single Project View (with list of topics)
+- Topic View (with list of conversations)
+- Conversation View (rich text / markdown editor)
+
+### Key Features:
+- CRUD for Projects, Topics, Conversations
+- Tag input (pill-style UX)
+- Date tracking (created/updated)
+- Clean, minimal UI with Tailwind
+- Responsive layout (desktop-first, mobile-capable)
+
+---
+
+## Notes for Development
+- Supabase used for DB, auth, and storage
+- Typescript + React
+- All data fetching typed via `supabase-types.ts`
+- Future: Add auth + RLS to scope access
+
+---
+
+## UX Priorities
+- Fast access to conversation history
+- Intuitive nesting (Project → Topic → Conversation)
+- Clean separation of content types (titles vs bodies)
+- Soft autosave indicators, responsive feedback
